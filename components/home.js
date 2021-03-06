@@ -17,6 +17,10 @@ class Home extends Component {
                     title = "Contact"
                     onPress={() => navigation.navigate('Contact')}
                     /> 
+                    <Button
+                    title = "Login"
+                    onPress={() => navigation.navigate('Login')}
+                    /> 
                 </View>
         );
     }
@@ -31,7 +35,8 @@ const styles = StyleSheet.create({
     },
     text: {
     color: 'white',
-    fontSize: 25
+    fontSize: 25,
+    backgroundColor: '#3498db'
     }
 })
 export default Home;
