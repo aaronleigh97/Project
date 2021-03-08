@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, Button, StyleSheet } from 'react-native';
+import { Text, View, Button, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
 
-class About extends Component {
+class Reviews extends Component {
 
+
+    
     render () {
 
         const navigation = this.props.navigation;
@@ -13,7 +15,7 @@ class About extends Component {
                     title = "Go back"
                     onPress={() => navigation.goBack()}
                     /> 
-                </View>
+                     </View>
         );
     }
 }
@@ -31,4 +33,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default About;
+export default Reviews;

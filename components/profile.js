@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button, StyleSheet } from 'react-native';
 
-class Contact extends Component {
+class Profile extends Component {
 
     render () {
 
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Contact; 
+export default Profile; 
