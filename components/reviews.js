@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 
 class Reviews extends Component {
 
