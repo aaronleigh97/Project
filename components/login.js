@@ -77,8 +77,8 @@ class Login extends Component {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#3498db'
     },
     input: {
@@ -89,12 +89,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     buttonContainer: {
-        backgroundColor: '#2980b9',
-        paddingVertical: 10
+        marginTop: 20,
+        backgroundColor: "rgba(255,255,255,0.2)",
+        padding: 15,
+        borderRadius: 50,
+        textAlign: 'center',
+        justifyContent: 'center'
     },
     buttonText: {
-        textAlign: 'center',
-        color: '#FFFFFF'
+        color: 'white',
+        fontSize: 15,
+        textAlign: 'center'
     }
     
 });

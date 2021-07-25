@@ -4,9 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './components/home';
 import Profile from './components/profile';
-import Reviews from './components/reviews';
+import Locations from './components/locations';
 import Login from './components/login';
 import Register from './components/register';
+import Reviews from './components/reviews';
 
 const Stack = createStackNavigator()
 
@@ -19,8 +20,9 @@ class App extends Component {
           <Stack.Screen name="Login" component={Login} /> 
           <Stack.Screen name="Register" component={Register} />    
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Reviews" component={Reviews} />
-          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Locations" component={Locations} />
+          <Stack.Screen name="Profile" component={Profile} /> 
+          <Stack.Screen name="Reviews" component={Reviews} /> 
         </Stack.Navigator>
       </NavigationContainer>     
     )

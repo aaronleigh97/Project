@@ -16,6 +16,7 @@ class Register extends Component {
 
     register()
     {
+        const navigation = this.props.navigation;
         const request = 
         {
             first_name: this.state.firstName,
@@ -35,6 +36,7 @@ class Register extends Component {
         .then((response) => {
             console.log(response);
             Alert.alert("User created! " + response.id);
+            navigation.goBack();
         })
         .catch((error) => {
             Alert.alert("Oops, an error occured");
@@ -42,6 +44,7 @@ class Register extends Component {
         })
     }
     render () {
+
 
         return (
             <View style={ styles.container}> 
@@ -74,7 +77,7 @@ class Register extends Component {
             onChangeText={(password) => this.setState({password})}
             value={this.state.password}
             />
-            <TouchableOpacity style={ styles.buttonContainer} onPress={() => this.register()}>
+            <TouchableOpacity style={ styles.buttonContainer} onPress={() => this.register() }>
                 <Text style={styles.buttonText}>Create</Text>
             </TouchableOpacity>
             </View>
@@ -85,8 +88,8 @@ class Register extends Component {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#3498db'
     },
     input: {
@@ -97,8 +100,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     buttonContainer: {
-        backgroundColor: '#2980b9',
-        paddingVertical: 10
+        marginTop: 20,
+        backgroundColor: "rgba(255,255,255,0.2)",
+        padding: 15,
+        borderRadius: 50,
+        textAlign: 'center',
+        justifyContent: 'center'
     },
     buttonText: {
         textAlign: 'center',

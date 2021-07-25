@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, StyleSheet, Alert } from 'react-native';
+import { Text, View, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class Home extends Component {
@@ -28,47 +28,31 @@ class Home extends Component {
     
      }
 
-    getLocations = async () => 
-    {
-        let token = await AsyncStorage.getItem('@token');  
-        return fetch("http://10.0.2.2:3333/api/1.0.0/find", {
-            method: 'GET',
-            headers: {
-                'X-Authorization': token  
-            }
-            
-        }).then((response) => response.json())
-        .then((json) => {
-            console.log(json);
-            return json;
-
-        })
-
-        .catch((error) => {
-            Alert.alert("Oops, an error occured");
-            console.log(error);
-        })
-    }
+    
  
     render () {
 
         const navigation = this.props.navigation;
-        this.state.locations = this.getLocations();
+        
 
          return (
                 <View style={ styles.container}> 
-                    <Button
-                    title = "Reviews"
-                    onPress={() => navigation.navigate('Reviews')}
-                    /> 
-                    <Button
-                    title = "Profile"
-                    onPress={() => navigation.navigate('Profile')}
-                    />  
-                     <Button
-                    title = "Logout"
-                    onPress={() => this.logout()}
-                    /> 
+
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Locations')}>
+                        <Text style={styles.text}>
+                            Locations
+                        </Text> 
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
+                        <Text style={styles.text}>
+                            Profile
+                        </Text> 
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => this.logout('Logout')}>
+                        <Text style={styles.text}>
+                            Logout
+                        </Text> 
+                    </TouchableOpacity>
                 </View>
         );
     }
@@ -82,9 +66,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#3498db'
     },
     text: {
-    color: 'white',
-    fontSize: 25,
-    backgroundColor: '#3498db'
+        color: 'white',
+        fontSize: 15,
+        textAlign: 'center'
+    },
+    button: {
+        marginTop: 20,
+        backgroundColor: "rgba(255,255,255,0.2)",
+        padding: 15,
+        borderRadius: 50,
+        textAlign: 'center'
     }
+
 })
 export default Home;
