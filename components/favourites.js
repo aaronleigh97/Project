@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, Button, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { Text, View, Button, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Icon } from 'react-native-elements';
 
-class Locations extends Component {
-    
+class Favourites extends Component {
     constructor(props)
     {
         super(props);
         this.state = {
-            locations: [],
             user: {}
         };
     }
@@ -35,43 +33,24 @@ class Locations extends Component {
         })
 
     }
-
-    
-    getLocations = async () => 
-    {
-        let token = await AsyncStorage.getItem('@token');  
-        return fetch("http://10.0.2.2:3333/api/1.0.0/find", {
-            method: 'GET',
-            headers: {
-                'X-Authorization': token  
-            }
-            
-        }).then((response) => response.json())
-        .then((json) => {
-            return json;
-        })
-
-        .catch((error) => {
-            Alert.alert("Oops, an error occured");
-            console.log(error);
-        })
-    }
     
     async componentDidMount() {
-        this.setState({locations: await this.getLocations(), user: await this.getUser()});
+        this.setState({user: await this.getUser()})
         this.focusListener = this.props.navigation.addListener('focus', async () => {
-            this.setState({locations: await this.getLocations(), user: await this.getUser()})
+            this.setState({user: await this.getUser()})
           });
     }
 
     render () {
+
         const navigation = this.props.navigation;
-        const sortedLocations = this.state.locations?.sort(function(a, b) {
+        const sortedLocations = this.state.user.favourite_locations?.sort(function(a, b) {
             var locationA = a.location_name.toUpperCase();
             var locationB = b.location_name.toUpperCase();
             return (locationA < locationB) ? -1 : (locationA > locationB) ? 1 : 0;
         });
          return (
+             
                 <View style={styles.container}> 
                 <FlatList style={styles.container} data={sortedLocations} renderItem={({item}) => 
                 <View style={styles.container}>
@@ -80,7 +59,7 @@ class Locations extends Component {
                             {item.location_name}
                         </Text>
                         <Text style={styles.text}>
-                            {item.location_town}{"\n"}Average Overall Rating: {item.avg_overall_rating}{"\n"}
+                            {item.location_town}{"\n"}Average Overall Rating: {item.avg_overall_rating}
                         </Text>
                         <Icon 
                             name={this.state.user.favourite_locations?.filter(location => location.location_id == item.location_id).length > 0 ? 'heart' : `heart-o`} 
@@ -137,6 +116,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
     },
     item: {
+        flex: 1,
         backgroundColor: 'rgba(255,255,255,0.2)',
         padding: 50,
         marginVertical: 10,
@@ -159,4 +139,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Locations;
+export default Favourites;

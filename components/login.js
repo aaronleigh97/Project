@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: '#3498db'
+        backgroundColor: '#3498db',
+        padding: 15
     },
     input: {
         backgroundColor: 'rgba(255,255,255,0.2)',

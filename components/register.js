@@ -45,6 +45,7 @@ class Register extends Component {
     }
     render () {
 
+        const navigation = this.props.navigation;
 
         return (
             <View style={ styles.container}> 
@@ -80,6 +81,11 @@ class Register extends Component {
             <TouchableOpacity style={ styles.buttonContainer} onPress={() => this.register() }>
                 <Text style={styles.buttonText}>Create</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.goBack()}>
+                        <Text style={styles.buttonText}>
+                            Go Back
+                        </Text> 
+                    </TouchableOpacity>
             </View>
         );
     }
@@ -90,7 +96,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: '#3498db'
+        backgroundColor: '#3498db',
+        padding: 15
     },
     input: {
         backgroundColor: 'rgba(255,255,255,0.2)',

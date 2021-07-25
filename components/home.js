@@ -43,6 +43,11 @@ class Home extends Component {
                             Locations
                         </Text> 
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Favourites')}>
+                        <Text style={styles.text}>
+                            Favourite locations
+                        </Text> 
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
                         <Text style={styles.text}>
                             Profile
@@ -63,7 +68,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#3498db'
+        backgroundColor: '#3498db',
+        padding: 15
     },
     text: {
         color: 'white',

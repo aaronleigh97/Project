@@ -8,6 +8,8 @@ import Locations from './components/locations';
 import Login from './components/login';
 import Register from './components/register';
 import Reviews from './components/reviews';
+import Favourites from './components/favourites';
+import AddReview from './components/addReview'; 
 
 const Stack = createStackNavigator()
 
@@ -23,6 +25,8 @@ class App extends Component {
           <Stack.Screen name="Locations" component={Locations} />
           <Stack.Screen name="Profile" component={Profile} /> 
           <Stack.Screen name="Reviews" component={Reviews} /> 
+          <Stack.Screen name="Favourites" component={Favourites} /> 
+          <Stack.Screen name="AddReview" component={AddReview} /> 
         </Stack.Navigator>
       </NavigationContainer>     
     )
